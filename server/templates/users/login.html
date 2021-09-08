@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+</head>
+<body class="change-form" data-admin-utc-offset="28800">
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name"><a href="#">TestSSO</a></h1>
+        </div>
+        <div id="user-tools">
+
+        </div>
+    </div>
+    <!-- END Header -->
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <h1>请输入用户名和密码</h1>
+        <div id="content-main">
+            <form action="{% url 'users:login' %}" method="post" onkeydown="if(event.keyCode==13)return false;">
+                {% csrf_token %}
+                {{ form }}
+
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="text-center mt20">
+                    <input class="btn" type="submit" value="登录">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
